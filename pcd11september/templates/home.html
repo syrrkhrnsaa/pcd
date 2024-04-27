@@ -1,0 +1,128 @@
+{% extends "layout.html" %} {% block content %}
+
+<style>
+  /* style.css */
+  .jumbotron {
+    background-size: cover;
+    padding: 100px 0; /* Sesuaikan dengan kebutuhan Anda */
+    text-align: center;
+    color: #fff;
+    background-color: #2a919e; /* Warna latar belakang */
+  }
+
+  .jumbotron h1 {
+    font-size: 3rem; /* Sesuaikan dengan kebutuhan Anda */
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .jumbotron p {
+    font-size: 1.5rem; /* Sesuaikan dengan kebutuhan Anda */
+  }
+
+  .btn-primary {
+    background-color: #fff; /* Latar belakang putih */
+    color: #2a919e; /* Warna tulisan */
+    border-radius: 20px; /* Melengkungkan ujung */
+    padding: 15px 30px; /* Sesuaikan dengan kebutuhan Anda */
+    font-size: 1.2rem; /* Sesuaikan dengan kebutuhan Anda */
+    margin-right: 10px; /* Tambahkan jarak antara tombol */
+    border: 2px solid #2a919e; /* Menambahkan border */
+  }
+
+  .btn-primary:hover {
+    background-color: #164e56; /* Warna latar belakang saat hover */
+    color: #fff;
+  }
+
+  /* Tambahkan gaya untuk tombol upload */
+  .upload-button {
+    background-color: #164e56; /* Warna latar belakang saat hover */
+    color: #fff; /* Warna tulisan */
+    border-radius: 20px; /* Melengkungkan ujung */
+    padding: 15px 30px; /* Sesuaikan dengan kebutuhan Anda */
+    font-size: 1.2rem; /* Sesuaikan dengan kebutuhan Anda */
+    margin-right: 10px; /* Tambahkan jarak antara tombol */
+    border: none; /* Menghilangkan border */
+  }
+
+  .upload-button:hover {
+    background-color: #fff; /* Latar belakang putih */
+    color: #2a919e;
+  }
+
+  /* Stil untuk pratinjau gambar */
+  #image-preview-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #image-preview {
+    max-width: 100%;
+    max-height: 200px;
+  }
+</style>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 animate__animated animate__fadeInDown">Upload Foto</h1>
+    <p class="lead animate__animated animate__fadeInUp">Deskripsi.</p>
+    <form
+      id="upload-form"
+      action="{{ url_for('upload') }}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <label
+        for="inputGroupFile04"
+        class="btn btn-primary animate__animated animate__fadeInUp"
+      >
+        Pilih Gambar
+        <input
+          name="file"
+          type="file"
+          id="inputGroupFile04"
+          accept="image/*"
+          style="display: none"
+          onchange="previewImage(this)"
+        />
+      </label>
+      <button
+        type="submit"
+        class="btn upload-button animate__animated animate__fadeInUp"
+      >
+        Upload
+      </button>
+    </form>
+    <!-- Pratinjau gambar -->
+    <div id="image-preview-container">
+      <img
+        id="image-preview"
+        src="#"
+        alt="Pratinjau Gambar"
+        style="display: none"
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  function previewImage(input) {
+    var preview = document.getElementById("image-preview");
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        preview.src = e.target.result;
+        preview.style.display = "block";
+      };
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      preview.src = "#";
+      preview.style.display = "none";
+    }
+  }
+</script>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PeCeDe - Navbar Pure CSS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/static/assets/style.css" />
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <div id="nav-bar">
+      <input id="nav-toggle" type="checkbox" />
+      <div id="nav-header">
+        <a id="nav-title" href="/" target="_blank"><i></i>PeCeDE</a>
+        <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
+        <hr />
+      </div>
+      <div id="nav-content">
+        <div class="nav-button">
+          <a href="/"><i class="fas fa-home"></i><span>Home</span></a>
+        </div>
+        <div class="nav-button">
+          <a href="/about"
+            ><i class="fas fa-info-circle"></i><span>About</span></a
+          >
+        </div>
+        <hr />
+        <div class="nav-button">
+          <a href="#"><i class="fas fa-heart"></i><span>Following</span></a>
+        </div>
+        <div class="nav-button">
+          <a href="#trending"
+            ><i class="fas fa-chart-line"></i><span>Trending</span></a
+          >
+        </div>
+        <div class="nav-button">
+          <a href="#challenges"
+            ><i class="fas fa-fire"></i><span>Challenges</span></a
+          >
+        </div>
+        <div class="nav-button">
+          <a href="#spark"><i class="fas fa-magic"></i><span>Spark</span></a>
+        </div>
+        <hr />
+        <div class="nav-button">
+          <a href="#codepen-pro"
+            ><i class="fas fa-gem"></i><span>Codepen Pro</span></a
+          >
+        </div>
+        <div id="nav-content-highlight"></div>
+      </div>
+      <input id="nav-footer-toggle" type="checkbox" />
+      <div id="nav-footer">
+        <div id="nav-footer-heading">
+          <div id="nav-footer-avatar">
+            <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" />
+          </div>
+          <div id="nav-footer-titlebox">
+            <a id="nav-footer-title" href="#" target="_blank">Syira</a
+            ><span id="nav-footer-subtitle">Admin</span>
+          </div>
+          <label for="nav-footer-toggle"><i class="fas fa-caret-up"></i></label>
+        </div>
+        <div id="nav-footer-content">
+          <Lorem
+            >ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.</Lorem
+          >
+        </div>
+      </div>
+    </div>
+    <div id="content">{% block content %}{% endblock %}</div>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+<!-- partial:index.partial.html -->
+<div id="nav-bar">
+  <input id="nav-toggle" type="checkbox" />
+  <div id="nav-header">
+    <a id="nav-title" href="/" target="_blank"><i></i>PeCeDE</a>
+    <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
+    <hr />
+  </div>
+  <div id="nav-content">
+    <div class="nav-button">
+      <a href="/"><i class="fas fa-home"></i><span>Home</span></a>
+    </div>
+    <div class="nav-button">
+      <a href="/about"><i class="fas fa-info-circle"></i><span>About</span></a>
+    </div>
+    <div class="nav-button">
+      <a href="#pinned-items"
+        ><i class="fas fa-thumbtack"></i><span>Pinned Items</span></a
+      >
+    </div>
+    <hr />
+    <div class="nav-button">
+      <a href="#following"
+        ><i class="fas fa-heart"></i><span>Following</span></a
+      >
+    </div>
+    <div class="nav-button">
+      <a href="#trending"
+        ><i class="fas fa-chart-line"></i><span>Trending</span></a
+      >
+    </div>
+    <div class="nav-button">
+      <a href="#challenges"
+        ><i class="fas fa-fire"></i><span>Challenges</span></a
+      >
+    </div>
+    <div class="nav-button">
+      <a href="#spark"><i class="fas fa-magic"></i><span>Spark</span></a>
+    </div>
+    <hr />
+    <div class="nav-dropdown">
+      <div class="nav-button">
+        <span><i class="fas fa-cogs"></i> Umum</span>
+        <div class="dropdown-content">
+          <form
+            id=""
+            action="{{ url_for('normal') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <button type="submit" class="btn btn-primary">Normal</button>
+          </form>
+          <form
+            id=""
+            action="{{ url_for('grayscale') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <button type="submit" class="btn btn-primary">Grayscale</button>
+          </form>
+          <form
+            id=""
+            action="{{ url_for('zoomin') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <button type="submit" class="btn btn-primary">Zoom In</button>
+          </form>
+          <form
+            id=""
+            action="{{ url_for('zoomout') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <button type="submit" class="btn btn-primary">Zoom Out</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="nav-dropdown">
+      <div class="nav-button">
+        <span><i class="fas fa-arrows-alt"></i> Pergeseran</span>
+        <div class="dropdown-content">
+          <form
+            id=""
+            action="{{ url_for('move_left') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <button type="submit" class="btn btn-primary">Geser Kiri</button>
+          </form>
+          <form
+            id=""
+            action="{{ url_for('move_right') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <button type="submit" class="btn btn-primary">Geser Kanan</button>
+          </form>
+          <form
+            id=""
+            action="{{ url_for('move_up') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <button type="submit" class="btn btn-primary">Geser Atas</button>
+          </form>
+          <form
+            id=""
+            action="{{ url_for('move_down') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <button type="submit" class="btn btn-primary">Geser Bawah</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="nav-dropdown">
+      <div class="nav-button">
+        <span><i class="fas fa-lightbulb"></i> Penerangan</span>
+        <div class="dropdown-content">
+          <form
+            id=""
+            action="{{ url_for('brightness_multiplication') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <button type="submit" class="btn btn-primary">Terang (*)</button>
+          </form>
+          <form
+            id=""
+            action="{{ url_for('brightness_division') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <button type="submit" class="btn btn-primary">Gelap (/)</button>
+          </form>
+          <form
+            id=""
+            action="{{ url_for('brightness_addition') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <button type="submit" class="btn btn-primary">Terang (+)</button>
+          </form>
+          <form
+            id=""
+            action="{{ url_for('brightness_substraction') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <button type="submit" class="btn btn-primary">Gelap (-)</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="nav-button">
+      <a href="#codepen-pro"
+        ><i class="fas fa-gem"></i><span>Codepen Pro</span></a
+      >
+    </div>
+    <div id="nav-content-highlight"></div>
+  </div>
+  <input id="nav-footer-toggle" type="checkbox" />
+  <div id="nav-footer">
+    <div id="nav-footer-heading">
+      <div id="nav-footer-avatar">
+        <img
+          src="https://gravatar.com/avatar/4474ca42d303761c2901fa819c4f2547"
+        />
+      </div>
+      <div id="nav-footer-titlebox">
+        <a
+          id="nav-footer-title"
+          href="https://codepen.io/uahnbu/pens/public"
+          target="_blank"
+          >uahnbu</a
+        ><span id="nav-footer-subtitle">Admin</span>
+      </div>
+      <label for="nav-footer-toggle"><i class="fas fa-caret-up"></i></label>
+    </div>
+    <div id="nav-footer-content">
+      <Lorem
+        >ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.</Lorem
+      >
+    </div>
+  </div>
+</div>
