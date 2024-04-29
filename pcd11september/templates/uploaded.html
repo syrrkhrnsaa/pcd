@@ -1,45 +1,62 @@
 {% extends "layout.html" %} {% block content %}
-
-<style>
-  /* Style untuk jumbotron */
-  .jumbotron {
-    background-color: #f8f9fa; /* Warna background jumbotron */
-    padding: 40px;
-    border-radius: 20px;
-    margin-top: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Style untuk judul */
-  h1,
-  h2,
-  h3 {
-    color: #2a919e; /* Warna judul */
-  }
-
-  /* Style untuk tombol */
-  .btn {
-    background-color: #2a919e; /* Warna background tombol */
-    color: #fff; /* Warna teks tombol */
-    border-radius: 20px; /* Bentuk border tombol */
-    padding: 10px 20px; /* Padding tombol */
-    margin-bottom: 10px; /* Margin bawah tombol */
-    border: none; /* Menghilangkan border */
-    transition: background-color 0.3s; /* Transisi saat hover */
-  }
-
-  .btn:hover {
-    background-color: #357178; /* Warna background tombol saat hover */
-  }
-
-  /* Style untuk gambar */
-  .img-fluid {
-    border-radius: 10px; /* Bentuk border gambar */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan gambar */
-    margin-top: 20px; /* Ruang antara gambar dan judul */
-  }
-</style>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Editing App</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Style untuk jumbotron */
+    .jumbotron {
+      background-color: #f8f9fa; /* Warna background jumbotron */
+      padding: 40px;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    /* Style untuk judul */
+    h1,
+    h2,
+    h3 {
+      color: #2a919e; /* Warna judul */
+    }
+    /* Style untuk tombol */
+    .btn {
+      background-color: #2a919e; /* Warna background tombol */
+      color: #fff; /* Warna teks tombol */
+      border-radius: 20px; /* Bentuk border tombol */
+      padding: 10px 20px; /* Padding tombol */
+      margin-bottom: 10px; /* Margin bawah tombol */
+      border: none; /* Menghilangkan border */
+      transition: background-color 0.3s; /* Transisi saat hover */
+    }
+    .btn:hover {
+      background-color: #357178; /* Warna background tombol saat hover */
+    }
+    /* Style untuk gambar */
+    .img-fluid {
+      border-radius: 10px; /* Bentuk border gambar */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan gambar */
+      margin-top: 20px; /* Ruang antara gambar dan judul */
+    }
+    .dropdown-menu {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .dropdown-item {
+      color: #333;
+      padding: 10px 15px;
+      transition: background-color 0.3s;
+    }
+    .dropdown-item:hover {
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
 <div class="jumbotron jumbotron-fluid text-center">
   <h1 class="display-1" style="text-align: center">Menu</h1>
   <div class="container">
@@ -47,146 +64,71 @@
       <!-- Kolom Umum -->
       <div class="col-md-4 mb-4">
         <h2>Umum</h2>
-        <div class="d-flex flex-wrap justify-content-center">
-          <!-- Tombol-tombol Umum -->
-          <div class="p-2">
-            <form
-              id=""
-              action="{{ url_for('normal') }}"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <button type="submit" class="btn btn-primary">Normal</button>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownUmum" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Pilihan Umum
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownUmum">
+            <form id="" action="{{ url_for('normal') }}" method="POST" enctype="multipart/form-data">
+              <button class="dropdown-item" type="submit">Normal</button>
+            </form>
+            <form id="" action="{{ url_for('grayscale') }}" method="POST" enctype="multipart/form-data">
+              <button class="dropdown-item" type="submit">Grayscale</button>
+            </form>
+            <form id="" action="{{ url_for('zoomin') }}" method="POST" enctype="multipart/form-data">
+              <button class="dropdown-item" type="submit">Zoom In</button>
+            </form>
+            <form id="" action="{{ url_for('zoomout') }}" method="POST" enctype="multipart/form-data">
+              <button class="dropdown-item" type="submit">Zoom Out</button>
             </form>
           </div>
-          <div class="p-2 flex-fill bd-highlight">
-            <form
-              id=""
-              action="{{ url_for('grayscale') }}"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <button type="submit" class="btn btn-primary">Grayscale</button>
-            </form>
-          </div>
-          <div class="p-2 flex-fill bd-highlight">
-            <form
-              id=""
-              action="{{ url_for('zoomin') }}"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <button type="submit" class="btn btn-primary">Zoom In</button>
-            </form>
-          </div>
-          <div class="p-2 flex-fill bd-highlight">
-            <form
-              id=""
-              action="{{ url_for('zoomout') }}"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <button type="submit" class="btn btn-primary">Zoom Out</button>
-            </form>
-          </div>
-        </div>
       </div>
       <!-- Kolom Pergeseran -->
       <div class="col-md-4 mb-4">
         <h2>Pergeseran</h2>
-        <div class="d-flex flex-wrap justify-content-center">
-          <!-- Tombol-tombol Pergeseran -->
-          <div class="p-2">
-            <form
-              id=""
-              action="{{ url_for('move_left') }}"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <button type="submit" class="btn btn-primary">Geser Kiri</button>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownPergeseran" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Pilihan Pergeseran
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownPergeseran">
+            <form id="" action="{{ url_for('move_left') }}" method="POST" enctype="multipart/form-data">
+              <button class="dropdown-item" type="submit">Geser Kiri</button>
+            </form>
+            <form id="" action="{{ url_for('move_right') }}" method="POST" enctype="multipart/form-data">
+              <button class="dropdown-item" type="submit">Geser Kanan</button>
+            </form>
+            <form id="" action="{{ url_for('move_up') }}" method="POST" enctype="multipart/form-data">
+              <button class="dropdown-item" type="submit">Geser Atas</button>
+            </form>
+            <form id="" action="{{ url_for('move_down') }}" method="POST" enctype="multipart/form-data">
+              <button class="dropdown-item" type="submit">Geser Bawah</button>
             </form>
           </div>
-          <div class="p-2 flex-fill bd-highlight">
-            <form
-              id=""
-              action="{{ url_for('move_right') }}"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <button type="submit" class="btn btn-primary">Geser Kanan</button>
-            </form>
-          </div>
-          <div class="p-2 flex-fill bd-highlight">
-            <form
-              id=""
-              action="{{ url_for('move_up') }}"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <button type="submit" class="btn btn-primary">Geser Atas</button>
-            </form>
-          </div>
-          <div class="p-2 flex-fill bd-highlight">
-            <form
-              id=""
-              action="{{ url_for('move_down') }}"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <button type="submit" class="btn btn-primary">Geser Bawah</button>
-            </form>
-          </div>
-        </div>
       </div>
       <!-- Kolom Penerangan -->
-      <div class="col-md-4 mb-4">
-        <h2>Penerangan</h2>
-        <div class="d-flex flex-wrap justify-content-center">
-          <!-- Tombol-tombol Penerangan -->
-          <div class="p-2">
-            <form
-              id=""
-              action="{{ url_for('brightness_multiplication') }}"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <button type="submit" class="btn btn-primary">Terang (*)</button>
-            </form>
+        <div class="col-md-4 mb-4">
+          <h2>Penerangan</h2>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownPenerangan" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Pilihan Penerangan
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownPenerangan">
+              <form id="" action="{{ url_for('brightness_multiplication') }}" method="POST" enctype="multipart/form-data">
+                <button class="dropdown-item" type="submit">Terang (*)</button>
+              </form>
+              <form id="" action="{{ url_for('brightness_division') }}" method="POST" enctype="multipart/form-data">
+                <button class="dropdown-item" type="submit">Gelap (/)</button>
+              </form>
+              <form id="" action="{{ url_for('brightness_addition') }}" method="POST" enctype="multipart/form-data">
+                <button class="dropdown-item" type="submit">Terang (+)</button>
+              </form>
+              <form id="" action="{{ url_for('brightness_substraction') }}" method="POST" enctype="multipart/form-data">
+                <button class="dropdown-item" type="submit">Gelap (-)</button>
+              </form>
           </div>
-          <div class="p-2 flex-fill bd-highlight">
-            <form
-              id=""
-              action="{{ url_for('brightness_division') }}"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <button type="submit" class="btn btn-primary">Gelap (/)</button>
-            </form>
-          </div>
-          <div class="p-2 flex-fill bd-highlight">
-            <form
-              id=""
-              action="{{ url_for('brightness_addition') }}"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <button type="submit" class="btn btn-primary">Terang (+)</button>
-            </form>
-          </div>
-          <div class="p-2 flex-fill bd-highlight">
-            <form
-              id=""
-              action="{{ url_for('brightness_substraction') }}"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <button type="submit" class="btn btn-primary">Gelap (-)</button>
-            </form>
-          </div>
-        </div>
       </div>
       <!-- Kolom Analisis Gambar -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <h2>Analisis Gambar</h2>
         <div class="p-2 flex-fill bd-highlight">
           <form
@@ -200,59 +142,40 @@
         </div>
       </div>
       <!-- Kolom Pemrosesan Gambar -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <h2>Pemrosesan Gambar</h2>
         <div class="p-2 flex-fill bd-highlight">
           <form
             id=""
-            action="{{ url_for('histogram_equalizer') }}"
+            action="{{ url_for('histogram_rgb') }}"
             method="POST"
             enctype="multipart/form-data"
           >
-            <button type="submit" class="btn btn-primary">
-              Histogram Equalizer
-            </button>
+            <button type="submit" class="btn btn-primary">Histogram</button>
           </form>
         </div>
       </div>
       <!-- Kolom Filter Gambar -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <h2>Filter Gambar</h2>
-        <div class="p-2 flex-fill bd-highlight">
-          <form
-            id=""
-            action="{{ url_for('edge_detection') }}"
-            method="POST"
-            enctype="multipart/form-data"
-          >
-            <button type="submit" class="btn btn-primary">
-              Edge Detection
-            </button>
-          </form>
-        </div>
-        <div class="p-2 flex-fill bd-highlight">
-          <form
-            id=""
-            action="{{ url_for('blur') }}"
-            method="POST"
-            enctype="multipart/form-data"
-          >
-            <button type="submit" class="btn btn-primary">Blur</button>
-          </form>
-        </div>
-        <div class="p-2 flex-fill bd-highlight">
-          <form
-            id=""
-            action="{{ url_for('sharpening') }}"
-            method="POST"
-            enctype="multipart/form-data"
-          >
-            <button type="submit" class="btn btn-primary">Sharpening</button>
-          </form>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownFilter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Pilihan Filter
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownFilter">
+            <form id="" action="{{ url_for('edge_detection') }}" method="POST" enctype="multipart/form-data">
+              <button class="dropdown-item" type="submit">Edge Detection</button>
+            </form>
+            <form id="" action="{{ url_for('blur') }}" method="POST" enctype="multipart/form-data">
+              <button class="dropdown-item" type="submit">Blur</button>
+            </form>
+            <form id="" action="{{ url_for('sharpening') }}" method="POST" enctype="multipart/form-data">
+              <button class="dropdown-item" type="submit">Sharpening</button>
+            </form>
         </div>
       </div>
       <!-- Kolom Segmentation -->
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <h2>Segmentation</h2>
         <div class="p-2 flex-fill bd-highlight">
           <form
@@ -299,24 +222,39 @@
       </div>
     </div>
   </div>
-  <!-- Tampilan Gambar Hasil -->
-  <div class="container-fluid">
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <h3>After</h3>
-            <img
-              class="img-fluid"
-              src="{{ url_for('static', filename=file_path) }}"
-              alt="image here"
-            />
-          </div>
-        </div>
-      </div>
+  </div>
+<!-- Tampilan Gambar Hasil -->
+<div class="container">
+    <div class="col-lg-12">
+        <div class="justify-content-center">
+      <img class="img-fluid" src="{{ url_for('static', filename=file_path) }}" alt="Hasil Edit Gambar">
     </div>
   </div>
 </div>
 
-<style></style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    var dropdownMenus = document.querySelectorAll('.dropdown-menu');
+
+    dropdownToggles.forEach(function(dropdownToggle, index) {
+      var dropdownMenu = dropdownMenus[index];
+
+      dropdownToggle.addEventListener('click', function() {
+        dropdownMenu.classList.toggle('show');
+      });
+
+      window.addEventListener('click', function(event) {
+        if (!dropdownToggle.contains(event.target)) {
+          dropdownMenu.classList.remove('show');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
 {% endblock %}
